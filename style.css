@@ -2,13 +2,20 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+input {
+  font-family: "Poppins", sans-serif;
+}
+button {
+  font-family: "Poppins", sans-serif;
+}
+
 .container {
   width: 920px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .logo-section {
@@ -41,4 +48,44 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.income-and-expenses-section {
+  height: 400px;
+  width: 800px;
+  border: solid;
+  display: flex;
+  justify-content: center;
+  border-width: 2px;
+  border-color: black;
+}
+
+.add-new-position-section {
+  height: 75px;
+  width: 400px;
+  border: solid;
+  border-width: 2px;
+  border-color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-position-name-input {
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  font-size: 12px;
+}
+.new-position-amount-input {
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  font-size: 12px;
+}
+
+.add-new-position-btn {
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  font-size: 12px;
 }
