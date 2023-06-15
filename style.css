@@ -68,6 +68,8 @@ button {
   border-color: black;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .new-position-name-input {
@@ -88,4 +90,7 @@ button {
   border-color: gray;
   border-width: 2px;
   font-size: 12px;
+}
+
+.names-in-new-position-section {
 }
