@@ -55,6 +55,7 @@ button {
   width: 800px;
   border: solid;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   border-width: 2px;
   border-color: black;
@@ -62,7 +63,7 @@ button {
 
 .add-new-position-section {
   height: 75px;
-  width: 400px;
+  width: 396.5px;
   border: solid;
   border-width: 2px;
   border-color: black;
@@ -93,4 +94,14 @@ button {
 }
 
 .names-in-new-position-section {
+  font-size: 20px;
+  margin-bottom: 7px;
+}
+
+.list-of-incomes-and-expenses {
+  width: 396.5px;
+  height: 318px;
+  border: solid;
+  border-width: 2px;
+  border-color: black;
 }

@@ -28,13 +28,15 @@
       <div class="income-and-expenses-section">
         <div class="add-new-position-section">
           <p class="names-in-new-position-section">Income</p>
-          <form>
+          <form id="add-new-position-income">
             <input
+              name="incomeName"
               class="new-position-name-input"
               type="text"
               placeholder="revenue name"
             />
             <input
+              name="incomeAmount"
               class="new-position-amount-input"
               type="number"
               placeholder="amount"
@@ -44,19 +46,29 @@
         </div>
         <div class="add-new-position-section">
           <p class="names-in-new-position-section">Expenses</p>
-          <form>
+          <form id="add-new-position-expenses">
             <input
+              name="expensName"
               class="new-position-name-input"
               type="text"
               placeholder="expense name"
             />
             <input
+              name="expensAmount"
               class="new-position-amount-input"
               type="number"
               placeholder="amount"
             />
-            <button class="add-new-position-btn">add</button>
+            <button class="add-new-position-btn" type="submit">add</button>
           </form>
+        </div>
+        <div class="list-of-incomes-and-expenses">
+          <ul id="incomes-list"></ul>
+          <div>Sum of incomes: <span id="total-incomes">PLN</span></div>
+        </div>
+        <div class="list-of-incomes-and-expenses">
+          <ul class="expenses-list"></ul>
+          <div>Sum of expenses:<span id="total-expenses">PLN</span></div>
         </div>
       </div>
     </div>
