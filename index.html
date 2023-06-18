@@ -34,12 +34,16 @@
               class="new-position-name-input"
               type="text"
               placeholder="revenue name"
+              required
             />
             <input
               name="incomeAmount"
               class="new-position-amount-input"
               type="number"
               placeholder="amount"
+              min="0.01"
+              step="0.01"
+              required
             />
             <button class="add-new-position-btn">add</button>
           </form>
@@ -52,12 +56,16 @@
               class="new-position-name-input"
               type="text"
               placeholder="expense name"
+              required
             />
             <input
               name="expensAmount"
               class="new-position-amount-input"
               type="number"
               placeholder="amount"
+              min="0.01"
+              step="0.01"
+              required
             />
             <button class="add-new-position-btn" type="submit">add</button>
           </form>
@@ -67,7 +75,7 @@
           <div>Sum of incomes: <span id="total-incomes">PLN</span></div>
         </div>
         <div class="list-of-incomes-and-expenses">
-          <ul class="expenses-list"></ul>
+          <ul id="expenses-list"></ul>
           <div>Sum of expenses:<span id="total-expenses">PLN</span></div>
         </div>
       </div>
