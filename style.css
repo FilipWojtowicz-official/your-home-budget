@@ -78,15 +78,18 @@ button {
   border-color: gray;
   border-width: 2px;
   font-size: 12px;
+  border-radius: 3px;
 }
 .new-position-amount-input {
   border-style: solid;
   border-color: gray;
   border-width: 2px;
   font-size: 12px;
+  border-radius: 3px;
 }
 
 .add-new-position-btn {
+  border-radius: 3px;
   border-style: solid;
   border-color: gray;
   border-width: 2px;
@@ -104,4 +107,21 @@ button {
   border: solid;
   border-width: 2px;
   border-color: black;
+  overflow-y: scroll;
+}
+
+.edition-btn {
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.delete-btn {
+  border-style: solid;
+  border-color: gray;
+  border-width: 2px;
+  font-size: 12px;
+  border-radius: 3px;
 }

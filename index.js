@@ -68,9 +68,15 @@ function addIncome(name, amount, id) {
   item.textContent = `${name}: ${amount} PLN`;
 
   const editionBtn = document.createElement("button");
+  editionBtn.classList.add("edition-btn");
+  editionBtn.textContent = "edit";
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("delete-btn");
+  deleteBtn.textContent = "delete";
 
-  incomesList.appendChild(editionBtn);
   incomesList.appendChild(item);
+  incomesList.appendChild(editionBtn);
+  incomesList.appendChild(deleteBtn);
 }
 
 function addExpenses(name, amount, id) {
@@ -78,7 +84,12 @@ function addExpenses(name, amount, id) {
   item.textContent = `${name}: ${amount} PLN`;
 
   const editionBtn = document.createElement("button");
-
+  editionBtn.classList.add("edition-btn");
+  editionBtn.textContent = "edit";
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("delete-btn");
+  deleteBtn.textContent = "delete";
+  expensesList.appendChild(item, editionBtn, deleteBtn);
   expensesList.appendChild(editionBtn);
-  expensesList.appendChild(item);
+  expensesList.appendChild(deleteBtn);
 }
