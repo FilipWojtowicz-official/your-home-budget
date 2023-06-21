@@ -59,6 +59,7 @@ button {
   justify-content: center;
   border-width: 2px;
   border-color: black;
+  border-radius: 3px;
 }
 
 .add-new-position-section {
@@ -66,6 +67,7 @@ button {
   width: 396.5px;
   border: solid;
   border-width: 2px;
+  border-radius: 3px;
   border-color: black;
   display: flex;
   flex-direction: column;
@@ -124,4 +126,14 @@ button {
   border-width: 2px;
   font-size: 12px;
   border-radius: 3px;
+}
+
+.record-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 5px;
+}
+.btns-wrapper {
+  display: flex;
+  gap: 3px;
 }

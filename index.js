@@ -26,7 +26,8 @@ function updateTotalIncomes() {
   const total = incomes
     .map((income) => Number(income.amount))
     .reduce((a, b) => a + b, 0);
-  totalIncomes.textContent = `${total} PLN`;
+  const roundedTotal = Number(total.toFixed(2));
+  totalIncomes.textContent = `${roundedTotal} PLN`;
 }
 
 const expenses = [];
@@ -65,7 +66,10 @@ function finalScoreCalculation() {
 
 function addIncome(name, amount, id) {
   const item = document.createElement("li");
+  const btns = document.createElement("div");
   item.textContent = `${name}: ${amount} PLN`;
+  item.classList.add("record-wrapper");
+  btns.classList.add("btns-wrapper");
 
   const editionBtn = document.createElement("button");
   editionBtn.classList.add("edition-btn");
@@ -74,9 +78,36 @@ function addIncome(name, amount, id) {
   deleteBtn.classList.add("delete-btn");
   deleteBtn.textContent = "delete";
 
+  btns.appendChild(editionBtn);
+  btns.appendChild(deleteBtn);
+  item.appendChild(btns);
   incomesList.appendChild(item);
-  incomesList.appendChild(editionBtn);
-  incomesList.appendChild(deleteBtn);
+  editionBtn.addEventListener("click", () => {
+    const newName = window.prompt("Podaj nazwę");
+    const newAmount = window.prompt("Podaj kwotę");
+
+    if (
+      newName !== null &&
+      newName !== "" &&
+      newAmount !== null &&
+      newAmount !== ""
+    ) {
+      const index = incomes.findIndex((income) => income.id === id);
+      incomes[index].name = newName;
+      incomes[index].amount = newAmount;
+      item.textContent = `${newName}: ${newAmount} PLN`;
+      item.appendChild(btns);
+    }
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    const index = incomes.findIndex((income) => income.id === id);
+    if (index !== -1) {
+      incomes.splice(index, 1);
+      incomesList.removeChild(item);
+      updateTotalIncomes();
+    }
+  });
 }
 
 function addExpenses(name, amount, id) {
