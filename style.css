@@ -26,6 +26,7 @@ button {
 }
 .logo {
   height: 160px;
+  margin-top: 15px;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -38,7 +39,7 @@ button {
 .logo-text {
   font-size: 50px;
   position: relative;
-  top: 15px;
+  top: 25px;
 }
 
 .final-score-section {
@@ -53,13 +54,10 @@ button {
 .income-and-expenses-section {
   height: 400px;
   width: 800px;
-  border: solid;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border-width: 2px;
-  border-color: black;
-  border-radius: 3px;
+  gap: 4px;
 }
 
 .add-new-position-section {
@@ -68,7 +66,7 @@ button {
   border: solid;
   border-width: 2px;
   border-radius: 3px;
-  border-color: black;
+  border-color: gray;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,8 +106,8 @@ button {
   height: 318px;
   border: solid;
   border-width: 2px;
-  border-color: black;
-  overflow-y: scroll;
+  border-color: gray;
+  border-radius: 3px;
 }
 
 .edition-btn {
@@ -135,5 +133,16 @@ button {
 }
 .btns-wrapper {
   display: flex;
-  gap: 3px;
+  gap: 4px;
+}
+
+.list-box {
+  height: 290px;
+  overflow-y: scroll;
+}
+.list-sum-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
 }

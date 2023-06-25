@@ -27,7 +27,7 @@ function updateTotalIncomes() {
     .map((income) => Number(income.amount))
     .reduce((a, b) => a + b, 0);
   const roundedTotal = Number(total.toFixed(2));
-  totalIncomes.textContent = `${roundedTotal} PLN`;
+  totalIncomes.textContent = `Sum of incomes: ${roundedTotal} PLN`;
 }
 
 const expenses = [];
@@ -48,7 +48,8 @@ function updateTotalExpenses() {
   const total = expenses
     .map((expens) => Number(expens.amount))
     .reduce((a, b) => a + b, 0);
-  totalExpenses.textContent = `${total} PLN`;
+  const roundedTotal = Number(total.toFixed(2));
+  totalExpenses.textContent = `Sum of expenses: ${roundedTotal} PLN`;
 }
 
 function finalScoreCalculation() {
@@ -59,9 +60,14 @@ function finalScoreCalculation() {
     .map((expens) => Number(expens.amount))
     .reduce((a, b) => a + b, 0);
 
-  const finalresult = allIncomes - allExpenses;
+  const finalResult = allIncomes - allExpenses;
+  const roundedTotal = Number(finalResult.toFixed(2));
 
-  finalScore.textContent = `In this month you can spend ${finalresult} PLN`;
+  if (finalResult > 0) {
+    finalScore.textContent = `In this month you can spend ${roundedTotal} PLN`;
+  } else {
+    finalScore.textContent = "Ups... you can't spend any more money this month";
+  }
 }
 
 function addIncome(name, amount, id) {
@@ -83,10 +89,12 @@ function addIncome(name, amount, id) {
   item.appendChild(btns);
   incomesList.appendChild(item);
   editionBtn.addEventListener("click", () => {
-    const newName = window.prompt("Podaj nazwę");
-    const newAmount = window.prompt("Podaj kwotę");
+    const newName = window.prompt("enter the name");
+    const newAmount = window.prompt("enter the amount");
 
-    if (
+    if (isNaN(newAmount)) {
+      alert("in amount you have to enter a number");
+    } else if (
       newName !== null &&
       newName !== "" &&
       newAmount !== null &&
@@ -97,6 +105,8 @@ function addIncome(name, amount, id) {
       incomes[index].amount = newAmount;
       item.textContent = `${newName}: ${newAmount} PLN`;
       item.appendChild(btns);
+      updateTotalIncomes();
+      finalScoreCalculation();
     }
   });
 
@@ -106,13 +116,17 @@ function addIncome(name, amount, id) {
       incomes.splice(index, 1);
       incomesList.removeChild(item);
       updateTotalIncomes();
+      finalScoreCalculation();
     }
   });
 }
 
 function addExpenses(name, amount, id) {
   const item = document.createElement("li");
+  const btns = document.createElement("div");
   item.textContent = `${name}: ${amount} PLN`;
+  item.classList.add("record-wrapper");
+  btns.classList.add("btns-wrapper");
 
   const editionBtn = document.createElement("button");
   editionBtn.classList.add("edition-btn");
@@ -120,7 +134,40 @@ function addExpenses(name, amount, id) {
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("delete-btn");
   deleteBtn.textContent = "delete";
-  expensesList.appendChild(item, editionBtn, deleteBtn);
-  expensesList.appendChild(editionBtn);
-  expensesList.appendChild(deleteBtn);
+
+  btns.appendChild(editionBtn);
+  btns.appendChild(deleteBtn);
+  item.appendChild(btns);
+  expensesList.appendChild(item);
+  editionBtn.addEventListener("click", () => {
+    const newName = window.prompt("enter the name");
+    const newAmount = window.prompt("enter the amount");
+
+    if (isNaN(newAmount)) {
+      alert("in amount you have to enter a number");
+    } else if (
+      newName !== null &&
+      newName !== "" &&
+      newAmount !== null &&
+      newAmount !== ""
+    ) {
+      const index = expenses.findIndex((expens) => expens.id === id);
+      expenses[index].name = newName;
+      expenses[index].amount = newAmount;
+      item.textContent = `${newName}: ${newAmount} PLN`;
+      item.appendChild(btns);
+      updateTotalIncomes();
+      finalScoreCalculation();
+    }
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    const index = expenses.findIndex((expens) => expens.id === id);
+    if (index !== -1) {
+      expenses.splice(index, 1);
+      expensesList.removeChild(item);
+      updateTotalIncomes();
+      finalScoreCalculation();
+    }
+  });
 }
