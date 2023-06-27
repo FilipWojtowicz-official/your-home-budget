@@ -19,7 +19,7 @@ addNewPositionIncome.addEventListener("submit", (event) => {
   incomes.push({ name, amount, id });
   addIncome(name, amount, id);
   updateTotalIncomes();
-  finalScoreCalculation();
+  updateFinalScore();
 });
 
 function updateTotalIncomes() {
@@ -41,7 +41,7 @@ addNewPositionExpenses.addEventListener("submit", (event) => {
   expenses.push({ name, amount, id });
   addExpenses(name, amount, id);
   updateTotalExpenses();
-  finalScoreCalculation();
+  updateFinalScore();
 });
 
 function updateTotalExpenses() {
@@ -52,7 +52,7 @@ function updateTotalExpenses() {
   totalExpenses.textContent = `Sum of expenses: ${roundedTotal} PLN`;
 }
 
-function finalScoreCalculation() {
+function updateFinalScore() {
   const allIncomes = incomes
     .map((income) => Number(income.amount))
     .reduce((a, b) => a + b, 0);
@@ -62,11 +62,13 @@ function finalScoreCalculation() {
 
   const finalResult = allIncomes - allExpenses;
   const roundedTotal = Number(finalResult.toFixed(2));
-
+  const absolutValue = Math.abs(roundedTotal);
   if (finalResult > 0) {
     finalScore.textContent = `In this month you can spend ${roundedTotal} PLN`;
+  } else if (finalResult == 0) {
+    finalScore.textContent = "You're going to break even this month";
   } else {
-    finalScore.textContent = "Ups... you can't spend any more money this month";
+    finalScore.textContent = `Ups... You owe ${absolutValue} PLN this month`;
   }
 }
 
@@ -106,7 +108,7 @@ function addIncome(name, amount, id) {
       item.textContent = `${newName}: ${newAmount} PLN`;
       item.appendChild(btns);
       updateTotalIncomes();
-      finalScoreCalculation();
+      updateFinalScore();
     }
   });
 
@@ -116,7 +118,7 @@ function addIncome(name, amount, id) {
       incomes.splice(index, 1);
       incomesList.removeChild(item);
       updateTotalIncomes();
-      finalScoreCalculation();
+      updateFinalScore();
     }
   });
 }
@@ -156,8 +158,8 @@ function addExpenses(name, amount, id) {
       expenses[index].amount = newAmount;
       item.textContent = `${newName}: ${newAmount} PLN`;
       item.appendChild(btns);
-      updateTotalIncomes();
-      finalScoreCalculation();
+      updateTotalExpenses();
+      updateFinalScore();
     }
   });
 
@@ -166,8 +168,8 @@ function addExpenses(name, amount, id) {
     if (index !== -1) {
       expenses.splice(index, 1);
       expensesList.removeChild(item);
-      updateTotalIncomes();
-      finalScoreCalculation();
+      updateTotalExpenses();
+      updateFinalScore();
     }
   });
 }
