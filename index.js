@@ -91,7 +91,8 @@ function addIncome(name, amount, id) {
   item.appendChild(btns);
   incomesList.appendChild(item);
   editionBtn.addEventListener("click", () => {
-    const newName = window.prompt("enter the name");
+    const index = incomes.findIndex((income) => income.id === id);
+    const newName = window.prompt("enter the name", incomes[index]);
     const newAmount = window.prompt("enter the amount");
 
     if (isNaN(newAmount)) {
