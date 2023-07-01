@@ -92,8 +92,8 @@ function addIncome(name, amount, id) {
   incomesList.appendChild(item);
   editionBtn.addEventListener("click", () => {
     const index = incomes.findIndex((income) => income.id === id);
-    const newName = window.prompt("enter the name", incomes[index]);
-    const newAmount = window.prompt("enter the amount");
+    const newName = window.prompt("enter the name", incomes[index].name);
+    const newAmount = window.prompt("enter the amount", incomes[index].amount);
 
     if (isNaN(newAmount)) {
       alert("in amount you have to enter a number");
@@ -143,8 +143,9 @@ function addExpenses(name, amount, id) {
   item.appendChild(btns);
   expensesList.appendChild(item);
   editionBtn.addEventListener("click", () => {
-    const newName = window.prompt("enter the name");
-    const newAmount = window.prompt("enter the amount");
+    const index = expenses.findIndex((expens) => expens.id === id);
+    const newName = window.prompt("enter the name", expenses[index].name);
+    const newAmount = window.prompt("enter the amount", expenses[index].amount);
 
     if (isNaN(newAmount)) {
       alert("in amount you have to enter a number");
