@@ -97,12 +97,7 @@ function addIncome(name, amount, id) {
 
     if (isNaN(newAmount)) {
       alert("in amount you have to enter a number");
-    } else if (
-      newName !== null &&
-      newName !== "" &&
-      newAmount !== null &&
-      newAmount !== ""
-    ) {
+    } else if (newName && newAmount) {
       const index = incomes.findIndex((income) => income.id === id);
       incomes[index].name = newName;
       incomes[index].amount = newAmount;
@@ -149,12 +144,7 @@ function addExpenses(name, amount, id) {
 
     if (isNaN(newAmount)) {
       alert("in amount you have to enter a number");
-    } else if (
-      newName !== null &&
-      newName !== "" &&
-      newAmount !== null &&
-      newAmount !== ""
-    ) {
+    } else if (newName && newAmount) {
       const index = expenses.findIndex((expens) => expens.id === id);
       expenses[index].name = newName;
       expenses[index].amount = newAmount;
