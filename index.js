@@ -4,10 +4,15 @@ const addNewPositionExpenses = document.getElementById(
   "add-new-position-expenses"
 );
 const incomesList = document.getElementById("incomes-list");
+const incomeName = document.getElementsByName("incomeName")[0];
+const incomeAmount = document.getElementsByName("incomeAmount")[0];
+
 const expensesList = document.getElementById("expenses-list");
+const expensName = document.getElementsByName("expensName")[0];
+const expensAmount = document.getElementsByName("expensAmount")[0];
+
 const totalIncomes = document.getElementById("total-incomes");
 const totalExpenses = document.getElementById("total-expenses");
-
 const incomes = [];
 
 addNewPositionIncome.addEventListener("submit", (event) => {
@@ -15,6 +20,8 @@ addNewPositionIncome.addEventListener("submit", (event) => {
   const name = event.target.incomeName.value;
   const amount = event.target.incomeAmount.value;
   const id = Math.random();
+  incomeName.value = "";
+  incomeAmount.value = "";
 
   incomes.push({ name, amount, id });
   addIncome(name, amount, id);
@@ -37,6 +44,8 @@ addNewPositionExpenses.addEventListener("submit", (event) => {
   const name = event.target.expensName.value;
   const amount = event.target.expensAmount.value;
   const id = Math.random();
+  expensName.value = "";
+  expensAmount.value = "";
 
   expenses.push({ name, amount, id });
   addExpenses(name, amount, id);

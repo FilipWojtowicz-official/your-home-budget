@@ -63,37 +63,16 @@ button {
 .add-new-position-section {
   height: 75px;
   width: 395px;
-  border: solid;
-  border-width: 2px;
   border-radius: 3px;
-  border-color: gray;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.new-position-name-input {
-  border-style: solid;
-  border-color: gray;
-  border-width: 2px;
+.font-and-border-style {
   font-size: 12px;
   border-radius: 3px;
-}
-.new-position-amount-input {
-  border-style: solid;
-  border-color: gray;
-  border-width: 2px;
-  font-size: 12px;
-  border-radius: 3px;
-}
-
-.add-new-position-btn {
-  border-radius: 3px;
-  border-style: solid;
-  border-color: gray;
-  border-width: 2px;
-  font-size: 12px;
 }
 
 .names-in-new-position-section {
@@ -104,9 +83,6 @@ button {
 .list-of-incomes-and-expenses {
   width: 395px;
   height: 318px;
-  border: solid;
-  border-width: 2px;
-  border-color: gray;
   border-radius: 3px;
 }
 
@@ -145,4 +121,8 @@ button {
   align-items: center;
   justify-content: center;
   padding: 4px;
+}
+
+.border-style {
+  border: 2px solid gray;
 }
