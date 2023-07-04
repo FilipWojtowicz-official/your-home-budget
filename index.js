@@ -13,6 +13,7 @@ const expensAmount = document.getElementsByName("expensAmount")[0];
 
 const totalIncomes = document.getElementById("total-incomes");
 const totalExpenses = document.getElementById("total-expenses");
+
 const incomes = [];
 
 addNewPositionIncome.addEventListener("submit", (event) => {
@@ -101,20 +102,26 @@ function addIncome(name, amount, id) {
   incomesList.appendChild(item);
   editionBtn.addEventListener("click", () => {
     const index = incomes.findIndex((income) => income.id === id);
-    const newName = window.prompt("enter the name", incomes[index].name);
-    const newAmount = window.prompt("enter the amount", incomes[index].amount);
 
-    if (isNaN(newAmount)) {
-      alert("in amount you have to enter a number");
-    } else if (newName && newAmount) {
-      const index = incomes.findIndex((income) => income.id === id);
-      incomes[index].name = newName;
-      incomes[index].amount = newAmount;
-      item.textContent = `${newName}: ${newAmount} PLN`;
-      item.appendChild(btns);
-      updateTotalIncomes();
-      updateFinalScore();
+    var newName = window.prompt("enter the name", incomes[index].name);
+    while (newName === "") {
+      newName = window.prompt("field cannot be blank", incomes[index].name);
     }
+
+    var newAmount = window.prompt("enter the amount", incomes[index].amount);
+    while (newAmount === "" || isNaN(newAmount)) {
+      newAmount = window.prompt(
+        "The field cannot be empty and cannot contain letters",
+        incomes[index].amount
+      );
+    }
+
+    incomes[index].name = newName;
+    incomes[index].amount = newAmount;
+    item.textContent = `${newName}: ${newAmount} PLN`;
+    item.appendChild(btns);
+    updateTotalIncomes();
+    updateFinalScore();
   });
 
   deleteBtn.addEventListener("click", () => {
@@ -148,20 +155,25 @@ function addExpenses(name, amount, id) {
   expensesList.appendChild(item);
   editionBtn.addEventListener("click", () => {
     const index = expenses.findIndex((expens) => expens.id === id);
-    const newName = window.prompt("enter the name", expenses[index].name);
-    const newAmount = window.prompt("enter the amount", expenses[index].amount);
 
-    if (isNaN(newAmount)) {
-      alert("in amount you have to enter a number");
-    } else if (newName && newAmount) {
-      const index = expenses.findIndex((expens) => expens.id === id);
-      expenses[index].name = newName;
-      expenses[index].amount = newAmount;
-      item.textContent = `${newName}: ${newAmount} PLN`;
-      item.appendChild(btns);
-      updateTotalExpenses();
-      updateFinalScore();
+    var newName = window.prompt("enter the name", expenses[index].name);
+    while (newName === "") {
+      newName = window.prompt("field cannot be blank", expenses[index].name);
     }
+
+    var newAmount = window.prompt("enter the amount", expenses[index].amount);
+    while (newAmount === "" || isNaN(newAmount)) {
+      newAmount = window.prompt(
+        "The field cannot be empty and cannot contain letters",
+        expenses[index].amount
+      );
+    }
+    expenses[index].name = newName;
+    expenses[index].amount = newAmount;
+    item.textContent = `${newName}: ${newAmount} PLN`;
+    item.appendChild(btns);
+    updateTotalExpenses();
+    updateFinalScore();
   });
 
   deleteBtn.addEventListener("click", () => {
