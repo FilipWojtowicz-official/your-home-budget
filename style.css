@@ -73,7 +73,16 @@ button {
 .font-and-border-style {
   border-radius: 3px;
   font-size: 12px;
-  box-sizing: border-box;
+}
+
+.input-style {
+  height: 24px;
+  width: 165px;
+}
+
+.btns-style {
+  height: 24px;
+  width: 43px;
 }
 
 .names-in-new-position-section {
@@ -130,7 +139,7 @@ button {
 
 .add-new-position-form {
   display: flex;
-  gap: 0.5%;
+  gap: 3px;
   justify-content: center;
   align-items: center;
 }
