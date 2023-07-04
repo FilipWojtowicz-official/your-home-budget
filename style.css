@@ -69,15 +69,15 @@ button {
   justify-content: center;
   align-items: center;
 }
-@media screen and (min-width: 768px) {
-  .font-and-border-style {
-    font-size: 10px;
-  }
-}
 
 .font-and-border-style {
-  font-size: 12px;
+  font-size: 10px;
   border-radius: 3px;
+}
+@media screen and (min-width: 768px) {
+  .font-and-border-style {
+    font-size: 12px;
+  }
 }
 
 .names-in-new-position-section {
