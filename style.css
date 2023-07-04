@@ -71,13 +71,9 @@ button {
 }
 
 .font-and-border-style {
-  font-size: 10px;
   border-radius: 3px;
-}
-@media screen and (min-width: 368px) {
-  .font-and-border-style {
-    font-size: 12px;
-  }
+  font-size: 12px;
+  box-sizing: border-box;
 }
 
 .names-in-new-position-section {
