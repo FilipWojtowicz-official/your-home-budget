@@ -71,7 +71,7 @@ button {
 }
 
 .font-and-border-style {
-  font-size: 10px;
+  font-size: 6px;
   border-radius: 3px;
 }
 @media screen and (min-width: 768px) {
