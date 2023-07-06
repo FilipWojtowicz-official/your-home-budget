@@ -13,7 +13,7 @@ const expensAmount = document.getElementsByName("expensAmount")[0];
 
 const totalIncomes = document.getElementById("total-incomes");
 const totalExpenses = document.getElementById("total-expenses");
-
+const modal = document.getElementById("modal");
 const incomes = [];
 
 addNewPositionIncome.addEventListener("submit", (event) => {
@@ -90,10 +90,10 @@ function addIncome(name, amount, id) {
   btns.classList.add("btns-wrapper");
 
   const editionBtn = document.createElement("button");
-  editionBtn.classList.add("edition-btn");
+  editionBtn.classList.add("btn");
   editionBtn.textContent = "edit";
   const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("delete-btn");
+  deleteBtn.classList.add("btn");
   deleteBtn.textContent = "delete";
 
   btns.appendChild(editionBtn);
@@ -103,25 +103,24 @@ function addIncome(name, amount, id) {
   editionBtn.addEventListener("click", () => {
     const index = incomes.findIndex((income) => income.id === id);
 
-    var newName = window.prompt("enter the name", incomes[index].name);
-    while (newName === "") {
-      newName = window.prompt("field cannot be blank", incomes[index].name);
-    }
-
-    var newAmount = window.prompt("enter the amount", incomes[index].amount);
-    while (newAmount === "" || isNaN(newAmount)) {
-      newAmount = window.prompt(
-        "The field cannot be empty and cannot contain letters",
-        incomes[index].amount
-      );
-    }
-
-    incomes[index].name = newName;
-    incomes[index].amount = newAmount;
-    item.textContent = `${newName}: ${newAmount} PLN`;
-    item.appendChild(btns);
-    updateTotalIncomes();
-    updateFinalScore();
+    modal.style.display = "block";
+    const name = document.getElementById("edit-name");
+    name.value = incomes[index].name;
+    const amount = document.getElementById("edit-amount");
+    amount.value = incomes[index].amount;
+    document.getElementById("edit-cancel").addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+    document.getElementById("edit-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      incomes[index].name = name.value;
+      incomes[index].amount = amount.value;
+      item.textContent = `${name.value}: ${amount.value} PLN`;
+      item.appendChild(btns);
+      updateTotalIncomes();
+      updateFinalScore();
+      modal.style.display = "none";
+    });
   });
 
   deleteBtn.addEventListener("click", () => {
@@ -143,10 +142,10 @@ function addExpenses(name, amount, id) {
   btns.classList.add("btns-wrapper");
 
   const editionBtn = document.createElement("button");
-  editionBtn.classList.add("edition-btn");
+  editionBtn.classList.add("btn");
   editionBtn.textContent = "edit";
   const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("delete-btn");
+  deleteBtn.classList.add("btn");
   deleteBtn.textContent = "delete";
 
   btns.appendChild(editionBtn);
@@ -156,24 +155,24 @@ function addExpenses(name, amount, id) {
   editionBtn.addEventListener("click", () => {
     const index = expenses.findIndex((expens) => expens.id === id);
 
-    var newName = window.prompt("enter the name", expenses[index].name);
-    while (newName === "") {
-      newName = window.prompt("field cannot be blank", expenses[index].name);
-    }
-
-    var newAmount = window.prompt("enter the amount", expenses[index].amount);
-    while (newAmount === "" || isNaN(newAmount)) {
-      newAmount = window.prompt(
-        "The field cannot be empty and cannot contain letters",
-        expenses[index].amount
-      );
-    }
-    expenses[index].name = newName;
-    expenses[index].amount = newAmount;
-    item.textContent = `${newName}: ${newAmount} PLN`;
-    item.appendChild(btns);
-    updateTotalExpenses();
-    updateFinalScore();
+    modal.style.display = "block";
+    const name = document.getElementById("edit-name");
+    name.value = expenses[index].name;
+    const amount = document.getElementById("edit-amount");
+    amount.value = expenses[index].amount;
+    document.getElementById("edit-cancel").addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+    document.getElementById("edit-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      expenses[index].name = name.value;
+      expenses[index].amount = amount.value;
+      item.textContent = `${name.value}: ${amount.value} PLN`;
+      item.appendChild(btns);
+      updateTotalIncomes();
+      updateFinalScore();
+      modal.style.display = "none";
+    });
   });
 
   deleteBtn.addEventListener("click", () => {

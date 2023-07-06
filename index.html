@@ -33,6 +33,7 @@
               name="incomeName"
               class="font-and-border-style border-style input-style"
               type="text"
+              minlength="3"
               placeholder="income name"
               required
             />
@@ -57,6 +58,7 @@
               name="expensName"
               class="font-and-border-style border-style input-style"
               type="text"
+              minlength="3"
               placeholder="expense name"
               required
             />
@@ -90,6 +92,33 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="modal border-style" id="modal">
+      <form id="edit-form">
+        <div class="edit-form-field">
+          <label for="edit-name">name</label>
+          <input
+            id="edit-name"
+            class="font-and-border-style border-style input-style"
+            type="text"
+            minlength="3"
+            required
+          />
+        </div>
+        <div class="edit-form-field">
+          <label for="edit-amount">amount</label>
+          <input
+            id="edit-amount"
+            class="font-and-border-style border-style input-style"
+            type="number"
+            min="0.01"
+            step="0.01"
+            required
+          />
+        </div>
+        <button type="submit" class="btn">save</button>
+        <button type="button" class="btn" id="edit-cancel">cancel</button>
+      </form>
     </div>
     <script src="index.js"></script>
   </body>

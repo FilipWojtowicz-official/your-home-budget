@@ -96,15 +96,7 @@ button {
   border-radius: 3px;
 }
 
-.edition-btn {
-  border-style: solid;
-  border-color: gray;
-  border-width: 2px;
-  font-size: 12px;
-  border-radius: 3px;
-}
-
-.delete-btn {
+.btn {
   border-style: solid;
   border-color: gray;
   border-width: 2px;
@@ -141,5 +133,26 @@ button {
   display: flex;
   gap: 3px;
   justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: none;
+  background-color: white;
+  width: 350px;
+  height: 170px;
+  padding: 24px;
+  position: fixed;
+  top: 20px;
+  left: calc(50% - 175px);
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+
+.edit-form-field {
+  margin: 16px 0px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
