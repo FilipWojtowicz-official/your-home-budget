@@ -121,6 +121,9 @@ function addIncome(name, amount, id) {
       item.appendChild(btns);
       updateTotalIncomes();
       updateFinalScore();
+      editionBtn.addEventListener("click", () => {
+        removeEventListener("click", editionBtn);
+      });
       modal.style.display = "none";
       return;
     });
