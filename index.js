@@ -15,6 +15,7 @@ const totalIncomes = document.getElementById("total-incomes");
 const totalExpenses = document.getElementById("total-expenses");
 const modal = document.getElementById("modal");
 const incomes = [];
+const expenses = [];
 
 addNewPositionIncome.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -37,8 +38,6 @@ function updateTotalIncomes() {
   const roundedTotal = Number(total.toFixed(2));
   totalIncomes.textContent = `Sum of incomes: ${roundedTotal} PLN`;
 }
-
-const expenses = [];
 
 addNewPositionExpenses.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -100,6 +99,7 @@ function addIncome(name, amount, id) {
   btns.appendChild(deleteBtn);
   item.appendChild(btns);
   incomesList.appendChild(item);
+
   editionBtn.addEventListener("click", () => {
     const index = incomes.findIndex((income) => income.id === id);
 
@@ -108,8 +108,10 @@ function addIncome(name, amount, id) {
     name.value = incomes[index].name;
     const amount = document.getElementById("edit-amount");
     amount.value = incomes[index].amount;
+
     document.getElementById("edit-cancel").addEventListener("click", () => {
       modal.style.display = "none";
+      return;
     });
     document.getElementById("edit-form").addEventListener("submit", (event) => {
       event.preventDefault();
@@ -120,6 +122,7 @@ function addIncome(name, amount, id) {
       updateTotalIncomes();
       updateFinalScore();
       modal.style.display = "none";
+      return;
     });
   });
 
@@ -130,6 +133,7 @@ function addIncome(name, amount, id) {
       incomesList.removeChild(item);
       updateTotalIncomes();
       updateFinalScore();
+      return;
     }
   });
 }
@@ -162,6 +166,7 @@ function addExpenses(name, amount, id) {
     amount.value = expenses[index].amount;
     document.getElementById("edit-cancel").addEventListener("click", () => {
       modal.style.display = "none";
+      return;
     });
     document.getElementById("edit-form").addEventListener("submit", (event) => {
       event.preventDefault();
@@ -169,9 +174,10 @@ function addExpenses(name, amount, id) {
       expenses[index].amount = amount.value;
       item.textContent = `${name.value}: ${amount.value} PLN`;
       item.appendChild(btns);
-      updateTotalIncomes();
+      updateTotalExpenses();
       updateFinalScore();
       modal.style.display = "none";
+      return;
     });
   });
 
@@ -182,6 +188,7 @@ function addExpenses(name, amount, id) {
       expensesList.removeChild(item);
       updateTotalExpenses();
       updateFinalScore();
+      return;
     }
   });
 }
