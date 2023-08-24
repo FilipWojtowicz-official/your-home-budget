@@ -113,7 +113,8 @@ function addIncome(name, amount, id) {
       modal.style.display = "none";
       return;
     });
-    document.getElementById("edit-form").addEventListener("submit", (event) => {
+
+    const editHandlerIncomes = (event) => {
       event.preventDefault();
       incomes[index].name = name.value;
       incomes[index].amount = amount.value;
@@ -125,8 +126,15 @@ function addIncome(name, amount, id) {
         removeEventListener("click", editionBtn);
       });
       modal.style.display = "none";
+      document
+        .getElementById("edit-form")
+        .removeEventListener("submit", editHandlerIncomes);
       return;
-    });
+    };
+
+    document
+      .getElementById("edit-form")
+      .addEventListener("submit", editHandlerIncomes);
   });
 
   deleteBtn.addEventListener("click", () => {
@@ -159,6 +167,7 @@ function addExpenses(name, amount, id) {
   btns.appendChild(deleteBtn);
   item.appendChild(btns);
   expensesList.appendChild(item);
+
   editionBtn.addEventListener("click", () => {
     const index = expenses.findIndex((expens) => expens.id === id);
 
@@ -167,11 +176,13 @@ function addExpenses(name, amount, id) {
     name.value = expenses[index].name;
     const amount = document.getElementById("edit-amount");
     amount.value = expenses[index].amount;
+
     document.getElementById("edit-cancel").addEventListener("click", () => {
       modal.style.display = "none";
       return;
     });
-    document.getElementById("edit-form").addEventListener("submit", (event) => {
+
+    const editHandlerExpensses = (event) => {
       event.preventDefault();
       expenses[index].name = name.value;
       expenses[index].amount = amount.value;
@@ -179,9 +190,19 @@ function addExpenses(name, amount, id) {
       item.appendChild(btns);
       updateTotalExpenses();
       updateFinalScore();
+      editionBtn.addEventListener("click", () => {
+        removeEventListener("click", editionBtn);
+      });
       modal.style.display = "none";
+      document
+        .getElementById("edit-form")
+        .removeEventListener("submit", editHandlerExpensses);
       return;
-    });
+    };
+
+    document
+      .getElementById("edit-form")
+      .addEventListener("submit", editHandlerExpensses);
   });
 
   deleteBtn.addEventListener("click", () => {
